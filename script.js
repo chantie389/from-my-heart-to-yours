@@ -256,64 +256,40 @@ function previousReasonScreen() {
 /* =========================
    FINAL TYPING ANIMATION
 ========================= */
-
+  
 function startTypingAnimation() {
-
     const typingText = document.getElementById("typingText");
     const signature = document.getElementById("signature");
 
-    if (!typingText) {
+    if (!typingText || !signature) {
         return;
     }
 
-    const phrases = [
-        "This",
-        "This is",
-        "This is only",
-        "This is only the",
-        "This is only the beginning."
-    ];
+    const message = "This is only the beginning.";
 
     typingText.textContent = "";
+    signature.style.opacity = "0";
 
-    if (signature) {
-        signature.style.opacity = "0";
-    }
+    let index = 0;
 
-    let phraseIndex = 0;
+    function typeNextLetter() {
+        if (index < message.length) {
+            typingText.textContent += message.charAt(index);
+            index++;
 
-    function showNextPhrase() {
-
-        if (phraseIndex >= phrases.length) {
-
-            if (signature) {
-                setTimeout(function() {
-                    signature.style.opacity = "1";
-                }, 700);
-            }
-
-            return;
+            setTimeout(typeNextLetter, 100);
+        } else {
+            // Pause before revealing your signature
+            setTimeout(function () {
+                signature.style.opacity = "1";
+            }, 900);
         }
-
-        typingText.style.opacity = "0";
-
-        setTimeout(function() {
-
-            typingText.textContent = phrases[phraseIndex];
-
-            typingText.style.opacity = "1";
-
-            phraseIndex++;
-
-            setTimeout(showNextPhrase, 1300);
-
-        }, 500);
     }
 
-    showNextPhrase();
+    typeNextLetter();
 }
 
-
+    
 /* =========================
    INITIAL LOAD
 ========================= */

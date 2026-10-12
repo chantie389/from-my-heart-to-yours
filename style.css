@@ -382,10 +382,24 @@ h3 {
 }
 
 #typingText {
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(3rem, 8vw, 7rem);
-    line-height: 1.05;
     color: var(--cream);
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 400;
+    text-align: center;
+    min-height: 1.3em;
+    
+}
+
+.signature {
+    margin-top: 2.5rem;
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    line-height: 1.8;
+    color: var(--gold);
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1.5s ease;
 }
 
 
